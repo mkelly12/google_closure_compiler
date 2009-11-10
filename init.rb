@@ -1,0 +1,1 @@
+require 'google_closure_compiler'
