@@ -17,14 +17,14 @@ else
   # Support for Rails <= 2.1.x
   module ActionView::Helpers::AssetTagHelper
   private
-    def join_asset_file_contents_with_minification(files)
-      content = join_asset_file_contents_without_minification(files)
+    def join_asset_file_contents_with_compilation(files)
+      content = join_asset_file_contents_without_compilation(files)
       if !files.grep(%r[/javascripts]).empty?
         content = GoogleClosureCompiler::Javascript.new(content).compiled
       end
       content
     end
-    alias_method_chain :join_asset_file_contents, :minification
+    alias_method_chain :join_asset_file_contents, :compilation
   end # ActionView::Helpers::AssetTagHelper
 end
 
