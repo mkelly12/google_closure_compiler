@@ -1,6 +1,6 @@
 # GoogleClosureCompiler
 
-Makes integrating the Google JavaScript Compiler with your Rails deployment process dead simple.
+Makes integrating the Google JavaScript Compiler with your Rails deployment process dead simple. [Read why compressing your JavaScript is important](http://www.zurb.com/article/311/shrink-your-javascript-with-the-google-compiler-rails-plugin)
 
 Both the Google Closure Compiler API and Application are supported. Sensible defaults are provided.
 
@@ -14,9 +14,11 @@ Any version of Rails `2.x`; including Rails `2.3.4` and `2.1.2`.
 
 ## So how does it work?
 
+[Read how this integrates with your workflow](http://www.zurb.com/article/311/shrink-your-javascript-with-the-google-compiler-rails-plugin)
+
 The plugin use the Google Closure Compiler to optimize JavaScript files cached by Rails.
 
-Anytime you use the `javascript_include_tag` with the `:cache => true` or `:cache => 'bundle_name'` the resulting JavaScript file will be compiled. [Read more about Rails asset caching](http://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html#M001713).
+Anytime you use the `javascript_include_tag` with the `:cache => true` or `:cache => 'bundle_name'` the resulting JavaScript file will be compiled. [Read more about Rails asset caching](http://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html#M001713)
 
 You will also need this in your production.rb (and in your development.rb only when testing):
 
