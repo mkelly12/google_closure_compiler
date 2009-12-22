@@ -1,3 +1,5 @@
+require "rexml/document"
+
 require 'google_closure_compiler/javascript'
 
 # Adapted from Smurf plugin http://github.com/thumblemonks/smurf/
