@@ -69,7 +69,7 @@ In this example `wooly_zurbian.js` is a JavaScript file in `/public/javascripts/
 
 This helper inserts the Google Closure Library base.js and events.js scripts when `perform_caching` is false. When `perform_caching` is true these files are not required since they are added using the `calcdeps.py` script.
 
-The Google Closure Library is required and is assumed to be in `public/javascripts/closure`. If you put it somewhere else in `/public/javascripts` specify the relative path from `/public/javascripts/` using `closure_library_path` in `google_closure_compiler.yml`. 
+The Google Closure Library is required and is assumed to be in `public/javascripts/closure`. If you put it somewhere else specify the relative path from `/public/javascripts/` using `closure_library_path` in `google_closure_compiler.yml`. 
 
 The `wooly_zurbian.js` script is inserted and cached in `/public/javascripts/cache/closure/wooly_zurbian.js`.
 
@@ -77,7 +77,7 @@ The `wooly_zurbian.js` script is inserted and cached in `/public/javascripts/cac
 
 If any of your cached JavaScript files contain a call to `goog.require()` then that cached file will be expanded using the `calcdeps.py` script. This requires Python 2.4 or greater and the Google Closure Library (see Using the Google Closure Library).
 
-`calcdeps.py` takes each `goog.require()` calls and replaces it with the required libraries. [Read more](http://code.google.com/closure/library/docs/calcdeps.html) about `calcdeps.py` and why it is important when using the Google Closure Library.
+`calcdeps.py` takes each `goog.require()` call and replaces it with the required libraries. [Read more](http://code.google.com/closure/library/docs/calcdeps.html) about `calcdeps.py` and why it is important when using the Google Closure Library.
 
 `ADVANCED_OPTIMIZATIONS` is used for the compilation of cached file that are expanded with `calcdeps.py` regardless of what is specified in the `/config/google_closure_compiler.yml` file.
 
