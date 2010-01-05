@@ -1,4 +1,6 @@
 require "rexml/document"
+require "yaml"
+
 require "app/helpers/google_closure_helper" 
 
 require 'google_closure_compiler/javascript'
@@ -35,25 +37,26 @@ end
 
 module GoogleClosureCompiler
   class << self
-    attr_accessor :compilation_level, :compiler_application_path, :java_path, :closure_library_path
-    def configure
-      yield self
-    end
+    CONFIG = YAML.load_file(File.join(RAILS_ROOT, 'config', 'google_closure_compiler.yml'))[RAILS_ENV] || {}
     
     def compiler_application_path
-      @compiler_application_path || File.join(File.dirname(__FILE__), '..', 'bin', 'compiler.jar')
+      CONFIG['compiler_application_path'] || File.join(File.dirname(__FILE__), '..', 'bin', 'compiler.jar')
     end
   
     def compilation_level
-      @compilation_level || 'SIMPLE_OPTIMIZATIONS'
+      CONFIG['compilation_level'] || 'SIMPLE_OPTIMIZATIONS'
     end
     
     def java_path
-      @java_path || 'java'
+      CONFIG['java_path'] || 'java'
+    end
+    
+    def python_path
+      CONFIG['python_path'] || 'python'
     end
     
     def closure_library_path
-      @closure_library_path || 'closure'
+      CONFIG['closure_library_path'] || 'closure'
     end
     
     def closure_library_full_path

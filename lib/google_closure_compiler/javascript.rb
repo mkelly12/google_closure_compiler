@@ -72,10 +72,11 @@ module GoogleClosureCompiler
     end
     
     def expand_closure_dependencies
-      `#{closure_expand_script} -i #{content_file_path} -p #{GoogleClosureCompiler.closure_library_full_path} -o script > #{expanded_content_file_path}`
+      `#{GoogleClosureCompiler.python_path} #{closure_expand_script} -i #{content_file_path} -p #{GoogleClosureCompiler.closure_library_full_path} -o script > #{expanded_content_file_path}`
       if $?.success?
         File.delete(content_file_path)
         File.move(expanded_content_file_path, content_file_path)
+        @content = File.read(content_file_path)
       else
         File.delete(expanded_content_file_path)
       end
