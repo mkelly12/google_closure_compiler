@@ -46,7 +46,6 @@ module GoogleClosureCompiler
     
     def compiler_cli_installed?
       return unless GoogleClosureCompiler.compiler_application_path
-      debugger
       output = `#{GoogleClosureCompiler.java_path} -jar #{GoogleClosureCompiler.compiler_application_path} --helpshort`
       output.include?('Usage: java [jvm-flags...] com.google.javascript.jscomp.CompilerRunner [flags...] [args...]')
     end
